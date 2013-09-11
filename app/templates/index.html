@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Yoga NOW Boulder</title>
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Styles -->
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px; /* When using the navbar-top-fixed */
+        }
+    </style>
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <script src="{{STATIC_URL}}js/api_call.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="hero-unit">
+            <h1>Yoga NOW Boulder</h1>
+            <p>Your source for yoga classes happening NOW in Boulder</p>
+            <!--<p><a class="btn btn-primary btn-large">Super important &raquo;</a></p>-->
+        </div><!-- .hero-unit -->
+
+        <div class="row">
+            <div class="span4">
+                <script type="text/javascript">
+                    var studios = ['yogapod', 'yogaworkshop'];
+                    $.each(studios, function(i, studio) {
+                        api_call(studio);
+                    });
+                </script>
+                <div id="list">
+                    <table id="class_table" class="table">
+                        <thead>Classes NOW</thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <!-- <p><a class="btn" href="#">Click meeee &raquo;</a></p> -->
+            </div>
+        </div><!-- .row -->
+    </div><!-- .container -->
+</body>
+</html>
