@@ -1,5 +1,4 @@
 var api_call = function(query) {
-
     $.getJSON('/api?studio=' + query, function(data) {
         var name = data['studio_name'];
         var classes = data['class_list'];
@@ -8,7 +7,8 @@ var api_call = function(query) {
         var class_table = $("#class_table").find('tbody');
 
         if (classes.length == 0) {
-            class_table.append('No more classes at ' + name + ' today');
+            class_table.append('<tr><th><a href="' + link +
+                        '">No more classes at ' + name + ' today</th></tr>');
         } else {
             var header = '<tr><th><a href="' + link + '">' + name + '</th>' +
                          '<th>Start Time</th>' +
