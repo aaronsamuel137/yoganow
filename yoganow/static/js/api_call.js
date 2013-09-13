@@ -1,7 +1,6 @@
 var api_call = function(query) {
 
-    $.getJSON('/api?studio=' + query)
-    .done(function(data) {
+    $.getJSON('/api?studio=' + query, function(data) {
         var name = data['studio_name'];
         var classes = data['class_list'];
 
@@ -22,6 +21,9 @@ var api_call = function(query) {
                 class_table.append(row);
             });
         }
+    })
+    .done(function(data) {
+        $("#loading").hide();
     })
     .fail(function() {
         console.log("failed");
