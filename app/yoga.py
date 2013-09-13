@@ -39,7 +39,8 @@ def get_yoga_pod(local_time):
         if 'hc_day' in line and next_day in line:
             break
     return {'studio_name': 'Yoga Pod',
-            'class_list': class_list}
+            'class_list': class_list,
+            'link': 'http://yogapodcommunity.com/boulder/schedule'}
 
 def get_yoga_workshop(local_time):
     next_day = util.next_day(local_time.tm_wday)
@@ -77,4 +78,5 @@ def get_yoga_workshop(local_time):
         if next_day in line:
             break
     return {'studio_name': 'Yoga Workshop',
-            'class_list': class_list}
+            'class_list': class_list,
+            'link': 'http://yogaworkshop.com/schedule/class-schedule'}
