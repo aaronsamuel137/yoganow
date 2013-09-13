@@ -25,27 +25,40 @@
         <div class="hero-unit">
             <h1>Yoga NOW Boulder</h1>
             <p>Your source for yoga classes happening NOW in Boulder</p>
-            <!--<p><a class="btn btn-primary btn-large">Super important &raquo;</a></p>-->
-        </div><!-- .hero-unit -->
+        </div>
 
         <div class="row">
             <div class="span8">
                 <script type="text/javascript">
                     var studios = ['yogapod', 'yogaworkshop'];
+                    $("#loading").show();
                     $.each(studios, function(i, studio) {
                         api_call(studio);
                     });
                 </script>
-                <div id="list">
+                <div id="listing">
                     <h3>Classes Happening NOW</h3>
-                    <table id="class_table" class="table">
+                    <div id="loading" style="text-align: center">
+                        <p id="loading text">Loading data from studios</p>
+                        <img id="spinner" src="{{STATIC_URL}}img/ajax-loader.gif" text="Loading, please wait">
+                    </div>
+                    <table id="class_table" class="table table-striped">
                         <thead></thead>
                         <tbody></tbody>
                     </table>
                 </div>
-                <!-- <p><a class="btn" href="#">Click meeee &raquo;</a></p> -->
             </div>
-        </div><!-- .row -->
-    </div><!-- .container -->
+            <div class="span4">
+                <h3>About</h3>
+                <p>Ever wanted to go to a yoga class right now, only to have to
+                   search through the websites of many different studios to find
+                   a class you like at a time you can make? Yoga NOW Boulder is
+                   the solution!</p>
+                <br>
+                <p>Want your studio to be included on Yoga NOW Boulder? Email
+                   aaron@yoganowboulder.com.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
