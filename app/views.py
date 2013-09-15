@@ -11,6 +11,10 @@ from app.models import Count
 from time import localtime
 
 def index(request):
+    # count = Count.objects.all()[0]
+    # count.num_vists = count.num_vists + 1
+    # count.save()
+
     # context = {'studios': ['yogapod', 'yogaworkshop']}
     context = {'studios': ['test1', 'test2']}
     return render(request, 'index.html', context)

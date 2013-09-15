@@ -1,7 +1,6 @@
 from django.db import models
 
 class Count(models.Model):
-    name = models.CharField(max_length=60, default='number of visiters')
     num_vists = models.IntegerField(default=0)
 
     def __unicode__(self):
