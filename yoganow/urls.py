@@ -10,8 +10,8 @@ urlpatterns = patterns('',
     # url(r'^api$', views.api_call)
     # url(r'^/', include('app.urls')),
     url(r'^$', 'app.views.index'),
-    url(r'^api$', 'app.views.api_call')
-
+    url(r'^api$', 'app.views.api_call'),
+    url(r'^blog$', 'app.views.blog')
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

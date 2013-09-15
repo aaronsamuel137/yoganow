@@ -31,8 +31,6 @@ def api_call(request):
 
     return HttpResponse(json.dumps(data))
 
-
-def api_test(request):
-    dat = [{'class_name': 'yin',}]
-    return HttpResponse(json.dumps(data))
-"""{"class_list": [{"class_name": "yin", "start_time": "5:00 PM", "end_time": "6:15 PM"}, {"class_name": "sweat_heat_beatz_level_2_flow", "start_time": "5:30 PM", "end_time": "6:45 PM"}], "studio_name": "Yoga Pod", "link": "http://yogapodcommunity.com/boulder/schedule"}"""
+def blog(request):
+    context = {}
+    return render(request, 'blog.html', context)
