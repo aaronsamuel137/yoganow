@@ -11,7 +11,8 @@ from app.models import Count
 from time import localtime
 
 def index(request):
-    context = {'studios': ['yogapod', 'yogaworkshop']}
+    # context = {'studios': ['yogapod', 'yogaworkshop']}
+    context = {'studios': ['test1', 'test2']}
     return render(request, 'index.html', context)
 
 def api_call(request):
@@ -22,13 +23,20 @@ def api_call(request):
         data = yoga.get_yoga_pod(local_time)
     elif studio == 'yogaworkshop':
         data = yoga.get_yoga_workshop(local_time)
-    elif studio == 'test':
-        data = {"class_list": [{"class_name": "yin", "start_time": "5:00 PM",
-                                "end_time": "6:15 PM"},
-                               {"class_name": "sweat_heat_beatz_level_2_flow",
-                                "start_time": "5:30 PM", "end_time": "6:45 PM"}],
-                "studio_name": "Yoga Pod",
-                "link": "http://yogapodcommunity.com/boulder/schedule"}
+    elif studio == 'test1':
+        data = {'class_list': [{'class_name': 'Test1', 'start_time': '5:00 PM',
+                                'end_time': '6:15 PM'},
+                               {'class_name': 'Test2',
+                                'start_time': '5:30 PM', 'end_time': '6:45 PM'}],
+                'studio_name': 'Test Studio',
+                'link': '/'}
+    elif studio == 'test2':
+        data = {'class_list': [{'class_name': 'Test3', 'start_time': '8:00 PM',
+                                'end_time': '9:15 PM'},
+                               {'class_name': 'Test4',
+                                'start_time': '2:30 PM', 'end_time': '6:45 PM'}],
+                'studio_name': 'Another Studio',
+                'link': '/'}
     else:
         data = {}
 
