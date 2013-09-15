@@ -5,6 +5,9 @@ import json
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import RequestContext, loader
+from app.models import Post
+from app.models import Count
+
 from time import localtime
 
 def index(request):
@@ -32,5 +35,6 @@ def api_call(request):
     return HttpResponse(json.dumps(data))
 
 def blog(request):
-    context = {}
+    posts = Post.objects.all().order_by('-created')
+    context = {'posts': posts}
     return render(request, 'blog.html', context)

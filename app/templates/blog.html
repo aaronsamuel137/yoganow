@@ -9,4 +9,13 @@
     <div class="hero-unit">
         <h1>Yoga NOW Blog</h1>
     </div>
+    <div class="row">
+        {% for post in posts %}
+            <div class="title">{{ post.title }}</div>
+            <ul>
+                <div class="time">{{ post.created }}</div>
+                <div class="body">{{ post.body|linebreaks }}</div>
+            </ul>
+        {% endfor %}
+    <div>
 {% endblock %}
