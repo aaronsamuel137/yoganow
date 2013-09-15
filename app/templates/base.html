@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Yoga NOW Boulder</title>
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Styles -->
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px; /* When using the navbar-top-fixed */
+        }
+    </style>
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    {% block scripts %}{% endblock %}
+</head>
+
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        {% block nav %}{% endblock %}
+                    </ul>
+                    <!-- <a class="btn btn-primary pull-right" href="http://twitter.github.com/bootstrap/">Twitter Bootstrap Home</a> -->
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    {% block main %}{% endblock %}
+</body>
+</html>
