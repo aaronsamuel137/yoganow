@@ -6,7 +6,7 @@ import util
 import json
 from time import strftime
 
-MAX_NUM_CLASSES = 2
+MAX_NUM_CLASSES = 3
 
 def get_yoga_pod(local_time):
     current_day = strftime('%a', local_time)
@@ -27,13 +27,14 @@ def get_yoga_pod(local_time):
         line = response.readline()
         if 'filterable' in line and 'cancelled' not in line:
             class_name = re.findall(class_regex, line)[0]
+            class_name = ' '.join([s.title() for s in class_name.split('_')])
             line = response.readline()
             times = re.findall(time_regex, line)
             class_time = util.time_str2float(times[0])
             if class_time >= current_time:
                 class_list.append({'class_name': class_name,
-                                   'start_time': times[0],
-                                   'end_time':   times[1]})
+                                   'start_time': times[0].lower(),
+                                   'end_time':   times[1].lower()})
         if len(class_list) >= MAX_NUM_CLASSES:
             break
         if 'hc_day' in line and next_day in line:

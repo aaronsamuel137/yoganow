@@ -11,12 +11,12 @@ from app.models import Count
 from time import localtime
 
 def index(request):
-    # count = Count.objects.all()[0]
-    # count.num_vists = count.num_vists + 1
-    # count.save()
+    count = Count.objects.all()[0]
+    count.num_vists = count.num_vists + 1
+    count.save()
 
-    # context = {'studios': ['yogapod', 'yogaworkshop']}
-    context = {'studios': ['test1', 'test2']}
+    context = {'studios': ['yogapod', 'yogaworkshop']}
+    # context = {'studios': ['test1', 'test2']}
     return render(request, 'index.html', context)
 
 def api_call(request):
@@ -50,3 +50,7 @@ def blog(request):
     posts = Post.objects.all().order_by('-created')
     context = {'posts': posts}
     return render(request, 'blog.html', context)
+
+def tests(request):
+    context = {}
+    return render(request, 'tests.html', context)
