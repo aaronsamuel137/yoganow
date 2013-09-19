@@ -7,8 +7,8 @@ var api_call = function(query) {
         var class_table = $("#class_table").find('tbody');
 
         if (classes.length == 0) {
-            class_table.append('<tr><th><a href="' + link +
-                        '">No more classes at ' + name + ' today</th></tr>');
+            // class_table.append('<tr><th>No more classes at <a href="' + link +
+            //             '">' + name + '</a> today</th></tr>');
         } else {
             var header = '<tr><th><a href="' + link + '">' + name + '</th>' +
                          '<th>Start Time</th>' +

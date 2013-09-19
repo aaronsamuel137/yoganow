@@ -17,12 +17,6 @@
 
     <div class="row">
         <div class="span6">
-            <script type="text/javascript">
-                var studios = {{ studios|safe }}
-                $.each(studios, function(i, studio) {
-                    api_call(studio);
-                });
-            </script>
             <div id="listing">
                 <h3>Classes Happening NOW</h3>
                 <div id="loading" style="text-align: center">
@@ -32,8 +26,14 @@
                     <thead></thead>
                     <tbody></tbody>
                 </table>
-                <div id="load-text">
+                <div id="no-classes">
                 </div>
+                <script type="text/javascript">
+                    var studios = {{ studios|safe }}
+                    $.each(studios, function(i, studio) {
+                        api_call(studio);
+                    });
+                </script>
             </div>
         </div>
         <div class="span6">
