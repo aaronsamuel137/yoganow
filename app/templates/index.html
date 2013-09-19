@@ -32,11 +32,13 @@
                     var studios = {{ studios|safe }}
                     $.each(studios, function(i, studio) {
                         api_call(studio);
+                    })
+                    .done(function(data) {
+                        var table = $("#class_table").find('tbody');
+                        if (!table.html()) {
+                            $("#no-classes").append('<p>No more classes today at supported studios</p>');
+                        }
                     });
-                    var table = $("#class_table").find('tbody');
-                    if (!table.html()) {
-                        $("#no-classes").append('<p>No more classes today at supported studios</p>');
-                    }
                 </script>
             </div>
         </div>
