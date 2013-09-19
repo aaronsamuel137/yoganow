@@ -33,6 +33,10 @@
                     $.each(studios, function(i, studio) {
                         api_call(studio);
                     });
+                    var table = $("#class_table").find('tbody');
+                    if (!table.html()) {
+                        $("#no-classes").append('<p>No more classes today at supported studios</p>');
+                    }
                 </script>
             </div>
         </div>
@@ -44,7 +48,7 @@
                just to find an interesting class. As of now, only a few studios
                are supported, but there are plans to support more and more as time goes on.</p>
             <br>
-            <p>Want your studio to be add to or removed from Yoga NOW Boulder? Email
+            <p>Want your studio to be added to or removed from Yoga NOW Boulder? Email
                aaron@yoganowboulder.com.</p>
         </div>
     </div>
