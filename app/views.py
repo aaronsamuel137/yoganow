@@ -15,7 +15,7 @@ def index(request):
     count.num_vists = count.num_vists + 1
     count.save()
 
-    context = {'studios': ['yogapod', 'yogaworkshop']}
+    context = {'studios': ['yogapod', 'yogaworkshop', 'adishakti']}
     # context = {'studios': ['test1', 'test2']}
     return render(request, 'index.html', context)
 
@@ -27,6 +27,8 @@ def api_call(request):
         data = yoga.get_yoga_pod(local_time)
     elif studio == 'yogaworkshop':
         data = yoga.get_yoga_workshop(local_time)
+    elif studio == 'adishakti':
+        data = yoga.get_adi_shakti(local_time)
     elif studio == 'test1':
         data = {'class_list': [{'class_name': 'Test1', 'start_time': '5:00 PM',
                                 'end_time': '6:15 PM'},
