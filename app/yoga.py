@@ -85,16 +85,20 @@ def get_yoga_workshop(local_time):
 def get_adi_shakti(local_time):
     def parse_gcal_time(time_str):
         hour, minutes, x, y = time_str.split(':')
+        if hour < current_hour or (hour == current_hour and minutes < current_mintue):
+            return None
         if int(hour) > 12:
             hour = str(int(hour) - 12)
-            am_pm = ' PM'
+            am_pm = ' pm'
         elif int(hour) == 12:
-            am_pm = ' PM'
+            am_pm = ' pm'
         else:
-            am_pm = ' AM'
+            am_pm = ' am'
         return ':'.join([hour, minutes]) + am_pm
 
     current_date = strftime('%Y-%m-%d', local_time)
+    current_hour = strftime('%H')
+    current_mintue = strftime('%M')
 
     url = 'https://www.google.com/calendar/embed?showTitle=0&showNav=0&showPrint=0&showTabs=0&showCalendars=0&mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=74b03lpbo956gtpdpjjj2ak0d0%40group.calendar.google.com&color=%2323164E&src=rachel.zelaya%40gmail.com&color=%23182C57&ctz=America%2FDenver'
     ds = urllib2.urlopen(url).readlines()
@@ -114,10 +118,11 @@ def get_adi_shakti(local_time):
             end = entry['gd$when'][0]['endTime']
             end_date, end_time = end.split('T')
             start_time = parse_gcal_time(start_time)
-            end_time = parse_gcal_time(end_time)
-            class_list.append({'class_name': class_name,
-                               'start_time': start_time,
-                               'end_time':   end_time})
+            if start_time:
+                end_time = parse_gcal_time(end_time)
+                class_list.append({'class_name': class_name,
+                                   'start_time': start_time,
+                                   'end_time':   end_time})
     return {'studio_name': 'Adi Shakti',
             'class_list': class_list,
             'link': 'http://www.adishakticenter.com/kundalini-yoga-class-schedule'}
