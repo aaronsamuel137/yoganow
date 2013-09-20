@@ -20,7 +20,7 @@
             <div id="listing">
                 <h3>Classes Happening NOW</h3>
                 <div id="loading" style="text-align: center">
-                    <img id="spinner" src="{{STATIC_URL}}img/ajax-loader.gif" text="Please wait">
+                    <img id="spinner" src="{{STATIC_URL}}img/ajax-loader.gif" alt="Please wait">
                 </div>
                 <table id="class_table" class="table table-striped">
                     <thead></thead>
@@ -32,13 +32,14 @@
                     var studios = {{ studios|safe }}
                     $.each(studios, function(i, studio) {
                         api_call(studio);
-                    })
-                    .done(function(data) {
+                    });
+                    var t = setTimeout(function() {
                         var table = $("#class_table").find('tbody');
-                        if (!table.html()) {
+                        console.log(table.html())
+                        if (table.html() == '') {
                             $("#no-classes").append('<p>No more classes today at supported studios</p>');
                         }
-                    });
+                    }, 5000);
                 </script>
             </div>
         </div>
